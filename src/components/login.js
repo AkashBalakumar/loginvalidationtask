@@ -36,9 +36,9 @@ function Login() {
         if(!values.username){
             errors.username ="Username is required!"
             }
-            else if(!values.password){
+             if(!values.password){
             errors.password ="password is required!"
-            }
+            } else if (values.password.length < 4) {
             return errors;
             };
     return(
