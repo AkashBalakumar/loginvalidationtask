@@ -21,6 +21,8 @@ function Login() {
         e.preventDefault();
         setFormErrors(Validate(formValues));
         setIsSubmit(true);
+        
+
        
 
     };
@@ -39,6 +41,8 @@ function Login() {
              if(!values.password){
             errors.password ="password is required!"
             } else if (values.password.length < 4) {
+            
+            }
             return errors;
             };
     return(
@@ -50,8 +54,9 @@ function Login() {
                 </Grid>
                  <TextField  style={{marginBottom:"2vh"}}
                  label='Username' placeholder='Enter username' fullWidth value={formValues.username}  name="username" onChange={handleChange}/>
-
+                 <p style={{color:"red"}}>{formErrors.username}</p>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth value={formValues.password} name="password" onChange={handleChange}/>
+                <p style={{color:"red"}}>{formErrors.password}</p>
                 <FormControlLabel
                     control={
                     <Checkbox
@@ -69,7 +74,7 @@ function Login() {
                 </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                     <Link href="#" >
+                     <Link href="welcome.html" >
                         Sign Up 
                 </Link>
                 </Typography>
