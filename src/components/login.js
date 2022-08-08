@@ -7,7 +7,7 @@ import { useState ,useEffect} from "react";
 function Login() {
 
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
-    const initialValues = {username:"", password:""};
+    const initialValues = {username:"", password:"" };
     const [formValues, setFormValues] =useState(initialValues);
     const [formErrors,setFormErrors]=useState({});
     const[isSubmit,setIsSubmit]= useState(false);
@@ -21,6 +21,7 @@ function Login() {
         e.preventDefault();
         setFormErrors(Validate(formValues));
         setIsSubmit(true);
+        
         
 
        
@@ -36,11 +37,16 @@ function Login() {
     const Validate=(values) =>{
         const errors ={};
         if(!values.username){
-            errors.username ="Username is required!"
-            }
-             if(!values.password){
+            errors.username="Username is required"
+        }
+        else if((values.username.length<=10) &&(values.username.length>=5)){ 
+            errors.username= "Username should be greater than 5characters"
+          }
+        
+        if(!values.password){
             errors.password ="password is required!"
-            } else if (values.password.length < 4) {
+            } else if (values.password.length < 8) {
+                errors.password="password sholud be greater than 8 characters"
             
             }
             return errors;
